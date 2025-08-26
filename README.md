@@ -1,9 +1,8 @@
-SkyVision - Mapeamento Inteligente com Drone e Visão Computacional
+SkyVision - Mapeamento Inteligente com Drone e Visão Computacional com YOLO:
 
-Este projeto é uma aplicação Fullstack (Front-end e API Back-end) que integra o controle de drones com visão computacional baseada em IA (YOLOv8) e geolocalização em tempo real, permitindo o mapeamento visual de objetos diretamente do vídeo capturado pelo drone.
-A plataforma permite visualização ao vivo, detecção automática de objetos e monitoramento geográfico através de um mapa interativo com atualização dinâmica.
+SkyVision é um mapeamento Inteligente com Drone, este projeto é uma aplicação Front-end e API Back-end que integra o controle de drones com visão computacional em IA (YOLOv8) e geolocalização em tempo real, sendo destinado á uma exibição no Porto de Santos e co  parceiria com a empresa Iochpe, tendo o seu significado de "Sky" (Visão) e "Vision" (Visão), permitindo o mapeamento visual de objetos diretamente do vídeo capturado pelo drone. A plataforma permite visualização ao vivo, detecção automática de objetos e monitoramento geográfico através de um mapa interativo com atualização dinâmica.
 
-Funcionalidades
+Funcionalidades:
 
 Conexão com drone real ou simulado via DroneKit
 
@@ -37,7 +36,7 @@ Leaflet.js → Biblioteca para exibição de mapas interativos
 
 Folium (opcional) → Geração de mapas em Python, se necessário
 
-Estrutura dos Arquivos
+Estrutura dos Arquivos:
 Arquivo / Pasta	Função
 backend/app.py	Inicializa o servidor Flask, define rotas da API e gera o stream de vídeo
 backend/yolo_detector.py	Carrega o modelo YOLOv8 e executa a detecção de objetos
