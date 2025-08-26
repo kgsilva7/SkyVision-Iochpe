@@ -1,106 +1,100 @@
-SkyVision - Mapeamento Inteligente com Drone e Visão Computacional com YOLO:
+SkyVision - Mapeamento Inteligente com Drone e Visão Computacional
 
-SkyVision é um projeto de mapeamento Inteligente com Drone, este nosso projeto é uma aplicação que integra o controle de drones com visão computacional em IA (YOLOv8) e geolocalização em tempo real, sendo destinado a uma exibição no Porto de Santos e com parceiria com a empresa Iochpe, tendo o seu significado de "Sky" (Visão) e "Vision" (Visão), permitindo o mapeamento visual de objetos diretamente do vídeo capturado pelo drone. A plataforma permite visualização ao vivo, detecção automática de objetos e monitoramento geográfico através de um mapa interativo com atualização dinâmica.
+Este projeto é uma aplicação de mapeamento inteligente com drones que integra visão computacional com YOLOv8, geolocalização em tempo real e exibição interativa em mapa.
+O sistema foi desenvolvido para monitoramento e demonstração tecnológica no Porto de Santos, em parceria com a empresa Iochpe, possibilitando identificar objetos em tempo real a partir do vídeo do drone e exibir os resultados em uma plataforma web interativa.
 
-Funcionalidades:
+Funcionalidades
 
-Conexão com drone real ou simulado via DroneKit
+Conexão com drone e captura de vídeo em tempo real
 
-Captura de vídeo ao vivo da câmera acoplada ao drone
+Detecção automática de objetos usando YOLOv8
 
-Detecção de objetos em tempo real usando YOLOv8
+Exibição do vídeo com caixas delimitadoras dos objetos detectados
 
-Mapeamento da posição atual do drone com Leaflet.js
+Integração com mapa interativo mostrando a posição do drone e pontos de detecção
 
-Atualização automática da posição no mapa a cada 3 segundos
+Atualização em tempo real via WebSocket
 
-Interface web acessível localmente para monitoramento remoto
+Painel web responsivo para monitoramento
 
 Tecnologias Utilizadas
 
-Python → Linguagem base para o backend e controle do drone
+Python (FastAPI) → API backend para processar o vídeo e fornecer dados em tempo real
 
-Flask → Framework web para criação da API REST
+YOLOv8 (Ultralytics) → Modelo de visão computacional para detecção de objetos
 
-DroneKit → Biblioteca para comunicação com drones via MAVLink
+OpenCV → Processamento de vídeo e integração com YOLO
 
-OpenCV → Processamento de vídeo e manipulação de imagens
+WebSocket → Comunicação em tempo real entre backend e frontend
 
-YOLOv8 (Ultralytics) → IA para detecção de objetos em tempo real
+Leaflet.js → Biblioteca de mapas interativos para exibição da posição do drone
 
-HTML/CSS → Estrutura e estilo da interface
+React.js → Frontend moderno e responsivo para interface de monitoramento
 
-JavaScript (Vanilla) → Comunicação entre frontend e backend
+Tailwind CSS → Estilização rápida e responsiva no frontend
 
-Leaflet.js → Biblioteca para exibição de mapas interativos
+Docker → Containerização da aplicação para fácil implantação
 
-Folium (opcional) → Geração de mapas em Python, se necessário
-
-Estrutura dos Arquivos:
-Arquivo / Pasta	Função
-backend/app.py	Inicializa o servidor Flask, define rotas da API e gera o stream de vídeo
-backend/yolo_detector.py	Carrega o modelo YOLOv8 e executa a detecção de objetos
-backend/drone_controller.py	Conecta ao drone e retorna localização GPS e status de voo
-frontend/index.html	Página principal da interface com vídeo e mapa
-frontend/static/style.css	Estilização visual da interface
-frontend/static/script.js	Atualiza a posição do drone no mapa periodicamente via chamadas à API
-requirements.txt	Lista de bibliotecas necessárias para rodar o backend
+Estrutura dos Arquivos
+Arquivo	Função
+.env	Configurações sensíveis, como credenciais de streaming ou chaves de API
+backend/main.py	Servidor FastAPI que processa vídeo, roda YOLO e envia dados via WebSocket
+backend/yolo.py	Configuração e execução do modelo YOLOv8
+backend/utils.py	Funções auxiliares para geolocalização e processamento de imagens
+frontend/src/App.js	Interface principal em React, exibe vídeo e mapa interativo
+frontend/src/components/VideoStream.js	Componente React para exibir o streaming do drone
+frontend/src/components/MapView.js	Componente React para exibir mapa interativo com deteções
+docker-compose.yml	Orquestra containers de backend e frontend
+package.json	Lista dependências do frontend
+requirements.txt	Lista dependências do backend (FastAPI, Ultralytics, OpenCV, etc.)
 O que cada tecnologia faz
 
-Flask → Gerencia as rotas da API e serve o frontend.
+FastAPI → Cria rotas e gerencia o backend de forma rápida e performática.
 
-DroneKit → Conecta e controla o drone (modo de voo, localização, armamento).
+YOLOv8 → Detecta objetos em tempo real a partir do vídeo do drone.
 
-YOLOv8 → Detecta objetos com base em modelos treinados, usando imagens capturadas ao vivo.
+OpenCV → Manipula o vídeo para desenhar caixas delimitadoras.
 
-OpenCV → Captura e processa quadros da câmera, desenha bounding boxes.
+WebSocket → Envia dados de detecção e localização para o frontend em tempo real.
 
-Leaflet.js → Exibe a localização do drone sobre mapas do OpenStreetMap.
+React → Interface web para visualização do vídeo e mapa.
 
-JavaScript → Atualiza dinamicamente a interface com dados do drone.
+Leaflet → Exibe mapa interativo com rota do drone e pontos de interesse.
 
-HTML/CSS → Estrutura e apresenta a interface para o usuário.
+Tailwind CSS → Fornece um design limpo e responsivo.
+
+Docker → Facilita a implantação em diferentes ambientes.
 
 Como rodar o projeto
 
 Clone o repositório
 
-git clone https://github.com/seu-usuario/dronevisionai.git
-cd dronevisionai
+git clone https://github.com/seu-usuario/skyvision.git
+cd skyvision
 
 
-Crie e ative um ambiente virtual (opcional, mas recomendado)
+Configure o arquivo .env
 
-python -m venv venv
-source venv/bin/activate        # Linux/macOS
-venv\Scripts\activate           # Windows
+DRONE_STREAM_URL=rtsp://seu-drone-url
+YOLO_MODEL=yolov8n.pt
 
+Suba os containers com Docker
 
-Instale as dependências
+docker-compose up --build
 
-pip install -r backend/requirements.txt
+Acesse o sistema
 
+Backend API: http://localhost:8000
 
-Execute o servidor
-
-cd backend
-python app.py
-
-
-Acesse o frontend
-Abra seu navegador em:
-
-http://localhost:5000
+Frontend Web: http://localhost:3000
 
 Endpoints principais
 
-GET / → Interface web com mapa e vídeo ao vivo
+GET /video → Stream de vídeo processado com detecção de objetos
 
-GET /video_feed → Stream de vídeo processado com detecção de objetos
+WS /ws/detections → Canal WebSocket para enviar detecções e localização em tempo real
 
-GET /api/location → Retorna a localização atual do drone (latitude, longitude, altitude)
-
-GET /api/status → Retorna o status atual do drone (modo de voo, bateria, armado)
+GET /status → Verifica se o backend está ativo
 
 Licença
 
