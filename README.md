@@ -1,7 +1,6 @@
 # SkyVision - Mapeamento Inteligente com Drone
 
-Este projeto é uma aplicação de mapeamento inteligente com drones que integra visão computacional com YOLOv8, geolocalização em tempo real e exibição interativa em mapa.
-O sistema foi desenvolvido para monitoramento e demonstração tecnológica no Porto de Santos, em parceria com a empresa Iochpe, possibilitando identificar objetos em tempo real a partir do vídeo do drone e exibir os resultados em uma plataforma web interativa.
+SkyVision é um projeto de mapeamento Inteligente com Drone, este nosso projeto é uma aplicação que integra o controle de drones com visão computacional em IA (YOLOv8) e geolocalização em tempo real, sendo destinado a uma exibição no Porto de Santos e com parceiria com a empresa Iochpe, tendo o seu significado de "Sky" (Visão) e "Vision" (Visão).
 ---
 ## Funcionalidades:
 - Conexão com drone e captura de vídeo em tempo real.
